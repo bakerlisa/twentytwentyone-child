@@ -1,0 +1,114 @@
+/*
+Theme Name: Nifty 2021 Child
+Template: twentytwentyone
+Author: Nifty Dev Team
+Author URI: https://niftymarketing.com/
+Description: A lightweight theme for use of our clients.
+Version: 2.0
+*/
+
+/*Theme Variables*/
+:root{
+	/*site colors*/
+	--white: #ffffff;
+	--black: #000000;
+	
+	/*font sizes*/
+	--fsize-xl: 55px;
+	--fsize-lg: 40px;
+	--fsize-md: 30px;
+	--fsize-sm: 20px;
+	--fsize-default: 16px; /*ADA requires at least 16px*/
+	
+	/*font families*/
+	--heading-font: "Playfair Display", serif;
+	--text-font: "Montserrat", sans-serif;
+}
+@media(max-width: 1000px){
+	:root{
+		/*font sizes*/
+		--fsize-xl: 40px;
+		--fsize-lg: 30px;
+		--fsize-md: 20px;
+		--fsize-sm: 18px;
+	}
+}
+@media(max-width: 750px){
+	:root{
+		/*font sizes*/
+		--fsize-xl: 35px;
+		--fsize-lg: 25px;
+		--fsize-md: 20px;
+		--fsize-sm: 18px;
+	}
+}
+
+
+/*Default Overall Styles*/
+html, body{scroll-behavior: smooth; font-size: var(--fsize-default); font-variant-ligatures: none; overflow-anchor: none;}
+body{margin:0; -webkit-font-smoothing: antialiased;}
+*{box-sizing: border-box; -webkit-appearance: none;}
+/* lazy loading flow fixes */
+img{max-width: 100%; height: auto;}
+img[src=""]{visibility: hidden;}
+img[data-url]:before{content: '';display: block;padding-top: 56.25%;}
+a{text-decoration: none; }
+
+
+/*Font Defaults*/
+h1, h2, h3, h4, h5, h6{font-family: var(--heading-font); line-height: 1.75em;}
+body, p, ul, ol, li{font-family: var(--text-font); line-height: 1.5em;}
+h1{font-size:var(--fsize-xl);}
+h2{font-size:var(--fsize-lg);}
+h3{font-size:var(--fsize-md);}
+h4{font-size:var(--fsize-sm);}
+
+
+/*Layout*/
+.section-padding{padding: 5% 0;}
+.content-width{width: 1130px; max-width: 100%; padding: 0 15px; margin: 0 auto;}
+.flex{display: flex; flex-wrap: wrap;}
+
+
+/* ADA header */
+.masthead{background: white; padding: 15px 25px; box-shadow: 0 0 6px rgba(0,0,0,.5);}
+.masthead .skip-bar{position: absolute; display: block; width: 100%; text-align: center; height: 0; overflow: hidden; background: #2b2b2b; top: 0; left: 0; z-index: 10;}
+.masthead .skip-bar:focus{height: auto; padding: 20px;}
+.masthead .inner-masthead{justify-content: space-between; align-items: center;}
+.masthead .logo-container{width: 30%;}
+.masthead .menus{width: 70%; justify-content: flex-end;}
+.mobile-nav-input{display: none;}
+.masthead #menu-main{list-style: none; padding: 0; font-weight:800; text-transform: uppercase;}
+#menu-main .sub-menu > li:focus-within > .sub-menu, #menu-main li{list-style-type: none;}
+
+@media (min-width: 1001px){
+	.masthead {position: fixed; left: 0; width: 100%; z-index: 1000; top: 0;}
+	body.admin-bar .masthead {top: 32px;}
+	.mobile-nav{display: none;}
+	
+	.masthead #menu-main{display: flex; margin: 0; flex-wrap: wrap; justify-content: flex-end;}
+	.masthead #menu-main > li{padding: 30px 10px; position: relative; margin-bottom: 0!important;}
+	.masthead #menu-main > li > .sub-menu{position: absolute; top: 100%; left: 0; background: rgba(255, 255, 255,.95); backdrop-filter: blur(5px); height: 0; overflow: hidden; z-index: 1000; list-style: none; box-shadow: 0 2px 7px rgba(0,0,0,.4);}
+.masthead #menu-main > li:hover > .sub-menu, .masthead #menu-main > li > a:focus + .sub-menu, .masthead #menu-main > li:focus-within > .sub-menu{height: auto; padding: 15px 0 15px 15px; min-width: 225px; overflow: initial;}
+.masthead #menu-main > li > .sub-menu > li{position: relative; padding-right: 15px;}
+.masthead #menu-main > li > .sub-menu .sub-menu{position: absolute; left: 99%; top: 0; background: rgba(37,37,37,.95); backdrop-filter: blur(5px); height: 0; width: 0; overflow: hidden; padding: 15px;}
+.masthead #menu-main .sub-menu > li > .sub-menu{position: absolute; left: 99%; top: 0; background: rgba(37,37,37,.95); backdrop-filter: blur(5px); height: 0; width: 0; overflow: hidden; padding: 0;}
+.masthead #menu-main .sub-menu > li:hover > .sub-menu, .masthead #menu-main .sub-menu > li > a:focus + .sub-menu, .masthead #menu-main .sub-menu > li:focus-within > .sub-menu{padding: 15px; width: initial; height: initial; min-width: 225px; list-style: none; border: 1px solid gray;}
+}
+@media(max-width: 1000px){
+	.masthead{position: relative;}
+	.masthead .logo-container{width: 80%;}
+	.masthead .menus{width: 20%;}
+	.mobile-nav{font-size: 22px; transform: scaleX(1.75);}
+	.main-nav{position: absolute; top: 100%; width: 100%; left: 0; background: white; border-top: 1px solid #aaa; box-shadow: 0 5px 10px rgba(0,0,0,.3); padding: 0 25px; height: 0; overflow: hidden; transition: padding .25s;}
+	#mobile-nav-input:checked + * + .main-nav{height: auto; padding: 10px 25px;}
+	#menu-main .sub-menu{display: none;}
+	#menu-main li a{}
+	#menu-main > li:hover > .sub-menu,
+	#menu-main > li:focus-within > .sub-menu,
+	#menu-main > li:hover > .sub-menu > li:hover > .sub-menu,
+	#menu-main > li:focus-within > .sub-menu > li:focus-within > .sub-menu{display: block;}
+}
+@media(max-width: 750px){
+	.masthead{padding: 15px;}
+}
